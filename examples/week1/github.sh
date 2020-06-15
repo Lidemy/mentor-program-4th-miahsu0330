@@ -11,3 +11,4 @@ echo $data | grep -o '"name": ".*", "company' | sed 's/"name": "//g' | sed 's/",
 echo $data | grep -o '"bio": ".*", "twitter_username' | sed 's/"bio": "//g' | sed 's/", "twitter_username//g';
 echo $data | grep -o '"location": ".*", "email' | sed 's/"location": "//g' | sed 's/", "email//g';
 echo $data | grep -o '"blog": ".*", "location' | sed 's/"blog": "//g' | sed 's/", "location//g';
+
