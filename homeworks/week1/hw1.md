@@ -12,4 +12,4 @@
 7. 回首頁按下完成按鈕(https://learning.lidemy.com/)
 8. 待助教批改完作業後 merge ...
 9. 將遠端檔案庫（remote repo）master 拉回本地端檔案庫（local repo） `$ git pull origin master`
-10. 刪除本地端分支 `$ git barnch -d <branchName>`
+10. 刪除本地端分支 `$ git barnch -d <branchName>
