@@ -6,7 +6,7 @@
 4. 把 branch 推上遠端檔案庫（remote repo）`$ git push origin <branchName>`
 5. 發出 pull request
 ![enter pull request page](./images/hw1-1.png)
-![creat pull request](./images/hw1-2.png)
+![create pull request](./images/hw1-2.png)
 
 6. 放 PR 連結至[作業列表](https://learning.lidemy.com/homeworks)
 7. 回首頁按下完成按鈕(https://learning.lidemy.com/)

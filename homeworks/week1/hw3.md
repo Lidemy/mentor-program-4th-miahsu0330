@@ -4,7 +4,7 @@ CLI 全名為：Commond Line Interface，中文是命令列介面。在說明 CI
 
 GUI 全名為：Graphical  User Interface，中文是圖形使用者介面，我們現在幾乎都是用 GUL 來跟電腦溝通（進行操作），例如：新增檔案、新增資料夾、開啟軟體等等。利用滑鼠點擊的方式及圖形化就可以達到上述的操作，因此在沒有 GUI 之前，打開電腦就只會看到黑黑的介面，必須輸入一些指令電腦才知道你要幹嘛，h0w 哥不是常逛批踢踢嗎？ 批踢踢也算 CLI 的一種。
 
-![creat pull request](./images/hw3-1.png)
+![create pull request](./images/hw3-1.png)
 
 
 那就正式進行操作吧（環境： MAC）
@@ -27,7 +27,7 @@ GUI 全名為：Graphical  User Interface，中文是圖形使用者介面，我
         ```
 
 3. **\[檔案操作指令] 新建檔案及資料夾**
-    * 建立資料夾：`$ madir <folderName>` 
+    * 建立資料夾：`$ mkdir <folderName>` 
     * 新建檔案： `$ touch afu.js`
     * 舉例：建立一個叫做 wifi 的資料夾，並且在裡面建立一個叫 afu.js 的檔案
         ```
