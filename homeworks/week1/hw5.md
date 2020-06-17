@@ -14,6 +14,7 @@
 
 * 資料庫的串接設計。
 * 處理伺服器效能。
+* 網站效能調校。
 * 應用程式介面（API）開發。
 
 
@@ -24,7 +25,7 @@
 2. 瀏覽器(Client)將 IP 包成一個 Request 發送出去。
 2. Request 透過 Internet 的層層協定 發送到 Server 端。
 3. Server 端解析 Request 
-4. 在 data center 撈取有關 JavaScrit 的資料
+4. 在 data center 撈取有關 JavaScript 的資料
 5. 包成一個 Response 回傳。
 4. Client 端開始解析 Response、解析 .html 檔案。
 5. 根據 .html 的檔案內容，一旦發現有 CSS、JS 或 image 等檔案，再發送個檔案的 Request 。
