@@ -1,6 +1,8 @@
 function join(arr, concatStr) {
-    let result = '';
-    result += arr[0];
+    if(arr.length === 0) {
+        return '';
+    }
+    let result = arr[0];
     for (let i = 1; i < arr.length; i++) {
         result += concatStr + arr[i];
     }
@@ -9,7 +11,7 @@ function join(arr, concatStr) {
 
 function repeat(str, times) {
     let result = '';
-    for(let i = 0; i < times; i++) {
+    for(let i = 0; i < times; i += 1) {
         result += str;
     }
     return result;
