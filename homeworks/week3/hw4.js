@@ -10,13 +10,17 @@ rl.on('line', (line) => {
 });
 
 
-function solve(input) {
-  const tmp = input[0];
-  let reverse = '';
-  for (let i = tmp.length - 1; i >= 0; i -= 1) {
-    reverse += tmp[i];
+function reverse(str) {
+  let result = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    result += str[i];
   }
-  if (tmp === reverse) {
+  return result;
+}
+
+function solve(input) {
+  const str = input[0];
+  if (reverse(str) === str) {
     console.log('True');
   } else {
     console.log('False');

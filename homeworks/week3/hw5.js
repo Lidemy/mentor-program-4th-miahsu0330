@@ -12,8 +12,9 @@ rl.on('line', (line) => {
 
 function compare(a, b) {
   if (a === b) return 'DRAW';
-  if (a.length > b.length) return 'A';
-  if (a.length < b.length) return 'B';
+  if (a.length !== b.length) {
+    return a.length > b.length ? 'A' : 'B';
+  }
   for (let i = 0; i < a.length; i += 1) {
     if (Number(a[i]) > Number(b[i])) return 'A';
     if (Number(a[i]) < Number(b[i])) return 'B';

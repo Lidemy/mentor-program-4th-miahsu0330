@@ -28,10 +28,7 @@ function isNarcissistic(num, l) {
     result += n ** power;
     n = Math.floor(n / 10);
   }
-  if (result === num) {
-    return true;
-  }
-  return false;
+  return result === num;
 }
 
 function solve(input) {
