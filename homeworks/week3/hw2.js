@@ -23,9 +23,9 @@ function getLength(num) {
 function isNarcissistic(num, l) {
   let result = 0;
   let n = num;
-  const power = l;
   while (n >= 1) {
-    result += n ** power;
+    const number = n % 10;
+    result += number ** l;
     n = Math.floor(n / 10);
   }
   return result === num;
@@ -33,9 +33,9 @@ function isNarcissistic(num, l) {
 
 function solve(input) {
   const tmp = input[0].split(' ').map(Number);
-  const form = tmp[0];
+  const from = tmp[0];
   const to = tmp[1];
-  for (let i = form; i <= to; i += 1) {
+  for (let i = from; i <= to; i += 1) {
     const l = getLength(i);
     if (isNarcissistic(i, l)) {
       console.log(i);

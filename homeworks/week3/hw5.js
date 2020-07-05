@@ -30,8 +30,11 @@ function solve(input) {
     const rule = Number(tmp[2]);
     const a = tmp[0];
     const b = tmp[1];
-    if (rule === 1) console.log(compare(a, b));
-    if (rule === -1) console.log(compare(b, a));
+    if (rule > 0) {
+      console.log(compare(a, b));
+    } else {
+      console.log(compare(b, a));
+    }
   }
 }
 
