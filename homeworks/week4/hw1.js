@@ -24,7 +24,7 @@ function callback(err, response, body) {
   // 將 res 轉成陣列後回傳
   const bookList = [];
   for (let i = 0; i < data.length; i += 1) {
-    bookList.push(`${i + 1} ${data[i].name}`);
+    bookList.push(`${data[i].id} ${data[i].name}`);
   }
   return console.log(bookList.join('\n'));
 }
