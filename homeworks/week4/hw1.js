@@ -21,12 +21,10 @@ function callback(err, response, body) {
     return console.log(error);
   }
 
-  // 將 res 轉成陣列後回傳
-  const bookList = [];
   for (let i = 0; i < data.length; i += 1) {
-    bookList.push(`${data[i].id} ${data[i].name}`);
+    console.log(`${data[i].id} ${data[i].name}`);
   }
-  return console.log(bookList.join('\n'));
+  return true;
 }
 
 request(options, callback);
