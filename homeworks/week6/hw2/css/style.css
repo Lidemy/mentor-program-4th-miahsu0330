@@ -127,16 +127,16 @@ input[type="radio"] ,input[type="checkbox"] {
     margin-right: 3px;
     transform: scale(.8);
 }
-.inputGtoup {
+.inputGroup {
     display: inline-flex;
     align-items: center;
     width: 100%;
     padding: 5px 0px;
 }
-.inputGtoup__label {
+.inputGroup__label {
     line-height: 1;
 }
-.inputGtoup__radio:focus {
+.inputGroup__radio:focus {
     outline: none;
 }
 .btn {
