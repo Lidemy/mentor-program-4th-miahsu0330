@@ -54,5 +54,5 @@
 * static 元素靜止不動的狀態，不會根據設定重新定位，是默認屬性。
 * relative 元素停留在原位置，但當設定 top left right bottom 時，會以原位置做基準重新定位。
 * absolute 元素會浮起，會往上找父元素是否非 static 做相對定位，若找到 body 都沒有就會以 body 做定位。
-fixed 元素會浮起，以 viewport 做定位。
+* fixed 元素會浮起，以 viewport 做定位，在滾動螢幕時也不會改變位置。
 
