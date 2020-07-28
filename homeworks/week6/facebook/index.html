@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- 頁首 -->
+    <header class="header">
+        <div class="header__inner">
+            <div class="header__content flex">
+                <div class="logo">
+                    <div class="logo__img"></div>
+                </div>
+                <div class="header__control flex">
+                    <form action="" class="searchBar flex">
+                        <input type="text" name="search" id="search" class="form__control">
+                        <input type="submit" value="" class="form__ic-search">
+                    </form>
+
+                    <div class="navTop flex">
+                        <div class="navTop__user flex">
+                            <div class="user flex"><img src="./images/img-user01@2x.png" alt=""
+                                    class="user__avatar"><span class="user__name">孫中山</span></div>
+                            <div>
+                                <a href="" class="home">首頁</a>
+                            </div>
+                            <div>
+                                <button class="dropDown">建立</button>
+                            </div>
+                        </div>
+                        <div class="navTop__buttons flex">
+                            <button class="ic friendsRequests"></button>
+                            <button class="ic messages"></button>
+                            <button class="ic notifications"></button>
+                        </div>
+                        <div class="navTop__buttons">
+                            <button class="ic quickHelp"></button>
+                            <button class="ic settings"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 頁首 end-->
+    <div class="wrap">
+        <div class="content flex">
+            <!-- 左側選單 -->
+            <div class="asideOuter">
+                <aside class="aside">
+                    <div class="user flex"><img src="./images/img-user01@2x.png" alt="" class="user__avatar"><span
+                            class="user__name">孫中山</span>
+                        <button class="ic dots"></button>
+                    </div>
+                    <div class="aside__navbar">
+                        <div class="aside__listOuter">
+                            <ul class="aside__list">
+                                <li class="aside__item active">
+                                    <a href="" class="aside_link newsFeed">動態消息</a>
+                                    <button class="ic dots"></button></li>
+                                <li class="aside__item">
+                                    <a href="" class="aside_link massenger">Messenger</a>
+                                </li>
+                                <li class="aside__item">
+                                    <a href="" class="aside_link watch">Watch</a>
+                                </li>
+                                <li class="aside__item">
+                                    <a href="" class="aside_link marketplace">Marketplace</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="aside__listOuter">
+                            <div class="aside__listTitle">捷徑</div>
+                            <ul class="aside__list">
+                                <li class="aside__item">
+                                    <a href="" class="aside_link shortcuts">台北前端社群</a>
+                                    <span class="num">11</span>
+                                    <button class="ic dots"></button></li>
+                                <li class="aside__item">
+                                    <a href="" class="aside_link shortcuts">Front-End Developers Taiwan</a>
+                                    <span class="num">121</span>
+                                    <button class="ic dots"></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="aside__listOuter">
+                            <div class="aside__listTitle">探索</div>
+                            <ul class="aside__list">
+                                <li class="aside__item">
+                                    <a href="" class="aside_link covid-19InformationCenter">新冠病毒資訊中心</a>
+                                    <span class="num"></span>
+                                    <button class="ic dots"></button></li>
+                                <li class="aside__item">
+                                    <a href="" class="aside_link saved">我的珍藏</a>
+                                    <span class="num">121</span>
+                                </li>
+                                <li class="aside__item">
+                                    <a href="" class="aside_link memories">動態回顧</a>
+                                    <span class="num">121</span>
+                                </li>
+                                <li class="aside__item">
+                                    <a href="" class="aside_link tagFriends">朋友名單</a>
+                                    <span class="num">121</span>
+                                </li>
+                                <a href="" class="aside_link more"><span class="ic settings"></span>查看更多.....</a>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <!-- 左側選單 end-->
+            <main class="main flex">
+                <!-- 主要貼文內容 -->
+                <div class="main__container">
+                    <!-- 建立貼文 -->
+                    <div class="block post">
+                        <div class="post__header">建立貼文</div>
+                        <div class="post__body">
+                            <div class="post__content flex">
+                                <button><img src="./images/img-user01@2x.png" alt="" class="user__avatar"></button>
+                                <div class="post__contentInner">孫中山，你在想什麼？</div>
+                            </div>
+                            <div class="post__control flex">
+                                <div class="post__item createRoom">建立視訊圈</div>
+                                <div class="post__item photoVideo">相片/影片</div>
+                                <div class="post__item tagFriends">標註朋友</div>
+                                <div class="post__item dots"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 建立貼文 end-->
+
+                    <!-- 視訊圈 -->
+                    <div class="block video">
+                        <div class="block__header">
+                            <div class="block__title">視訊圈</div><a href="" class="block__hLink">建立</a>
+                        </div>
+                        <div class="block__body">
+                            <div class="video__list">
+                                <div class="video__itemGrop">
+                                    <button class="video__item"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item on"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item on"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item on"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item"><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                    <button class="video__item "><img src="./images/img-user01@2x.png" alt=""
+                                            class="video__img"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="video__scrollBtn"></button>
+                    </div>
+                    <!-- 視訊圈 end -->
+                    <!-- 限時動態 -->
+                    <div class="block stories">
+                        <div class="block__header">
+                            <div class="block__title">限時動態</div><a href="" class="block__hLink">顯示全部</a>
+                        </div>
+                        <div class="block__body">
+                            <div class="stories__tray">
+                                <div class="stories__item">
+                                    <div class="stories__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                            class="w-100"></div>
+                                    <div class="stories__name">餅乾</div>
+                                </div>
+                                <div class="stories__item">
+                                    <div class="stories__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                            class="w-100"></div>
+                                    <div class="stories__name">水果</div>
+                                </div>
+                                <div class="stories__item">
+                                    <div class="stories__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                            class="w-100"></div>
+                                    <div class="stories__name">泡菜</div>
+                                </div>
+                                <div class="stories__item">
+                                    <div class="stories__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                            class="w-100"></div>
+                                    <div class="stories__name">麵包</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 限時動態 end -->
+                    <!-- 貼文串 -->
+                    <div class="">
+                        <div class="block news">
+                            <div class="news__header">
+                                <div class="news__avatar"><img src="./images/img-user01@2x.png" alt="" class="w-100">
+                                </div>
+                                <div class="news__headerInner">
+                                    <div class="news__titleArea">
+                                        <div class="news_title">
+                                            軟體開發學習資訊分享
+                                        </div>
+                                        <div class="flex">
+                                            <span class="news_time">1 小時</span>
+                                            <span>．</span>
+                                            <span class="news_setting"><img src="./images/global.svg"
+                                                    class="w-100"></span>
+                                        </div>
+                                    </div>
+                                    <div class="news__more">
+                                        <button class="ic dots"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news__body">
+                                <p>我的老天爺啊！！！！！我覺得能看到的人一定賺到了！！！！</p>
+                                <p>趕快筆記下來！！！！不要錯過我們對孫燕姿的愛～～～～</p>
+                                <a href="">#爆炸好聽的啊啊啊啊</a>
+                            </div>
+                            <div class="news__image">
+                                <img src="https://scontent.ftpe7-4.fna.fbcdn.net/v/t1.0-0/p180x540/107909492_2636629066585612_4279041612060926083_o.jpg?_nc_cat=101&_nc_sid=110474&_nc_ohc=runmqN52xagAX8eDbmm&_nc_ht=scontent.ftpe7-4.fna&_nc_tp=6&oh=2c9ec603fa212cc26f742dcba0b62cf1&oe=5F41BCB8"
+                                    alt="" class="w-100">
+                            </div>
+                            <div class="news__scial">
+                                <div class="emoji"><span class="emoji__ic good"></span><span
+                                        class="emoji__ic heart"></span><span class="count">411</span></div>
+                                <div class="news__desc">
+                                    <span>18則留言</span><span>6次分享</span>
+                                </div>
+                            </div>
+                            <div class="news__footer">
+                                <div class="btns">
+                                    <button class="btns__item"><span class="btns__text">讚</span></button>
+                                    <button class="btns__item"><span class="btns__text">留言</span></button>
+                                    <button class="btns__item"><span class="btns__text">分享</span></button>
+                                </div>
+                                <div class="userSwitch">
+                                    <div class="user__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                            class="w-100"></div>
+                                    <button class="dropDown"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block news">
+                            <div class="news__header">
+                                <div class="news__avatar"><img src="./images/img-user01@2x.png" alt="" class="w-100">
+                                </div>
+                                <div class="news__headerInner">
+                                    <div class="news__titleArea">
+                                        <div class="news_title">
+                                            軟體開發學習資訊分享
+                                        </div>
+                                        <div class="flex">
+                                            <span class="news_time">1 小時</span>
+                                            <span>．</span>
+                                            <span class="news_setting"><img src="./images/global.svg"
+                                                    class="w-100"></span>
+                                        </div>
+                                    </div>
+                                    <div class="news__more">
+                                        <button class="ic dots"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news__body">
+                                <p>我的老天爺啊！！！！！我覺得能看到的人一定賺到了！！！！</p>
+                                <p>趕快筆記下來！！！！不要錯過我們對孫燕姿的愛～～～～</p>
+                                <a href="">#爆炸好聽的啊啊啊啊</a>
+                            </div>
+                            <div class="news__image">
+                                <img src="https://scontent.ftpe7-4.fna.fbcdn.net/v/t1.0-0/p180x540/107909492_2636629066585612_4279041612060926083_o.jpg?_nc_cat=101&_nc_sid=110474&_nc_ohc=runmqN52xagAX8eDbmm&_nc_ht=scontent.ftpe7-4.fna&_nc_tp=6&oh=2c9ec603fa212cc26f742dcba0b62cf1&oe=5F41BCB8"
+                                    alt="" class="w-100">
+                            </div>
+                            <div class="news__scial">
+                                <div class="emoji"><span class="emoji__ic good"></span><span
+                                        class="emoji__ic heart"></span><span class="count">411</span></div>
+                                <div class="news__desc">
+                                    <span>18則留言</span><span>6次分享</span>
+                                </div>
+                            </div>
+                            <div class="news__footer">
+                                <div class="btns">
+                                    <button class="btns__item"><span class="btns__text">讚</span></button>
+                                    <button class="btns__item"><span class="btns__text">留言</span></button>
+                                    <button class="btns__item"><span class="btns__text">分享</span></button>
+                                </div>
+                                <div class="userSwitch">
+                                    <div class="user__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                            class="w-100"></div>
+                                    <button class="dropDown"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 貼文串 -->
+                </div>
+                <!-- 主要貼文內容 end-->
+                <!-- 右側提示及廣告內容 -->
+                <div class="main__sideOuter">
+                    <div class="main__side">
+                        <div class="block remind">
+                            <div><a href="">王小明</a>今天生日</div>
+                        </div>
+                        <div class="block ad">
+                        </div>
+                        <div class="block language">
+                            <div>
+                                中文(台灣) ·
+                                <a href="">English (US)</a> ·
+                                <a href="">Español</a> ·
+                                <a href="">Português (Brasil)</a> ·
+                                <a href="">Français (France)</a>
+                            </div>
+                            <div>
+                                <button class="btn-ic plus"></button>
+                            </div>
+                        </div>
+                        <div class="copyright">隱私政策 · 使用條款 · 廣告 · Ad Choices · Cookie ·
+                            更多
+                            <p class="copyright__text">Facebook © 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 右側提示及廣告內容 end-->
+            </main>
+        </div>
+    </div>
+    <!-- 右側聊天室 -->
+    <div class="chatSidebar">
+        <div class="chatSidebar__block liveGame">
+            <div class="chatSidebar__header">
+                <div class="chatSidebar__title">即時遊戲</div><a href="" class="chatSidebar__hLink">更多</a>
+            </div>
+            <div class="chatSidebar__body">
+                <div class="game__list">
+                    <div class="game__item">
+                        <img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.2081-6/c0.0.51.51a/p50x50/51622436_228511581428380_1375598404805066752_n.png?_nc_cat=1&_nc_sid=eaa83b&_nc_ohc=PsxaR47OIUgAX97627q&_nc_oc=AQkT5U8bjRGoUU3jvq1AUxWfFK0j-kgZOoQvW20fsPiepHAqxgzmQIUFFzTul7Gp6Dw&_nc_ht=scontent.ftpe7-2.fna&oh=157072998da8ca0d2a7595eb0cf3ce83&oe=5F41D2C1"
+                            alt="" class="w-100">
+                    </div>
+                    <div class="game__item">
+                        <img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.2081-6/c0.0.51.51a/p50x50/18279743_424982861206471_8415379257005441024_n.png?_nc_cat=1&_nc_sid=eaa83b&_nc_ohc=mIoRDQNO27cAX_0NhQ1&_nc_ht=scontent.ftpe7-2.fna&oh=11e48932565d9a706e720b1f47aa15e1&oe=5F4346BD"
+                            alt="" class="w-100">
+                    </div>
+                    <div class="game__item">
+                        <img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.2081-6/c0.0.51.51a/p50x50/22088589_1654976451201719_5191478939503034368_n.png?_nc_cat=1&_nc_sid=eaa83b&_nc_ohc=XxaQSFuP0YcAX8ztW1V&_nc_ht=scontent.ftpe7-2.fna&oh=841cf44a36a61edf96ccc6ceeafaf9e2&oe=5F425887"
+                            alt="" class="w-100">
+                    </div>
+                    <div class="slider__control">
+                        <button class="slider__btn pre"></button>
+                        <div class="slider__btn next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chatSidebar__block game">
+            <div class="chatSidebar__header">
+                <div class="chatSidebar__title">你的遊戲</div><a href="" class="chatSidebar__hLink">更多</a>
+            </div>
+            <div class="chatSidebar__body">
+                <div class="game__list">
+                    <div class="game__item">
+                        <img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.2081-6/c0.0.51.51a/p50x50/51622436_228511581428380_1375598404805066752_n.png?_nc_cat=1&_nc_sid=eaa83b&_nc_ohc=PsxaR47OIUgAX97627q&_nc_oc=AQkT5U8bjRGoUU3jvq1AUxWfFK0j-kgZOoQvW20fsPiepHAqxgzmQIUFFzTul7Gp6Dw&_nc_ht=scontent.ftpe7-2.fna&oh=157072998da8ca0d2a7595eb0cf3ce83&oe=5F41D2C1"
+                            alt="" class="w-100">
+                    </div>
+                    <div class="game__item">
+                        <img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.2081-6/c0.0.51.51a/p50x50/18279743_424982861206471_8415379257005441024_n.png?_nc_cat=1&_nc_sid=eaa83b&_nc_ohc=mIoRDQNO27cAX_0NhQ1&_nc_ht=scontent.ftpe7-2.fna&oh=11e48932565d9a706e720b1f47aa15e1&oe=5F4346BD"
+                            alt="" class="w-100">
+                    </div>
+                    <div class="game__item">
+                        <img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.2081-6/c0.0.51.51a/p50x50/22088589_1654976451201719_5191478939503034368_n.png?_nc_cat=1&_nc_sid=eaa83b&_nc_ohc=XxaQSFuP0YcAX8ztW1V&_nc_ht=scontent.ftpe7-2.fna&oh=841cf44a36a61edf96ccc6ceeafaf9e2&oe=5F425887"
+                            alt="" class="w-100">
+                    </div>
+                    <div class="slider__control">
+                        <button class="slider__btn pre"></button>
+                        <div class="slider__btn next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chatSidebar__block chat">
+            <div class="chat__inner">
+                <div class="fanPage">
+                    <div class="chatSidebar__header">
+                        <div class="chatSidebar__title">你的粉絲專頁</div>
+                    </div>
+                    <div class="chat__list">
+                        <div class="chat__item">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name">Front-End Developers Taiwan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="chatSidebar__header">
+                        <div class="chatSidebar__title">聯絡人</div>
+                    </div>
+                    <div class="chat__list">
+                        <div class="chat__item">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name">Front-End Developers Taiwan</span>
+                        </div>
+                        <div class="chat__item on">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name ">陳小美</span>
+                        </div>
+                        <div class="chat__item on">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name ">陳小美</span>
+                        </div>
+                        <div class="chat__item on">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name ">陳小美</span>
+                        </div>
+                        <div class="chat__item on">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name ">陳小美</span>
+                        </div>
+                    </div>
+                    <div class="chatSidebar__header">
+                        <div class="chatSidebar__title">群組對話</div>
+                    </div>
+                    <div class="chat__list">
+                        <div class="chat__item">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name">Front-End Developers Taiwan</span>
+                        </div>
+                        <div class="chat__item on">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name ">陳小美</span>
+                        </div>
+                    </div>
+                    <div class="chatSidebar__header">
+                        <div class="chatSidebar__title">更多聯絡人</div>
+                    </div>
+                    <div class="chat__list">
+                        <div class="chat__item">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name">Front-End Developers Taiwan</span>
+                        </div>
+                        <div class="chat__item on">
+                            <span class="chat__avatar"><img src="./images/img-user01@2x.png" alt=""
+                                    class="w-100"></span>
+                            <span class="chat__name ">陳小美</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat__control">
+            <input type="text" class="chat__search" placeholder="搜尋">
+        </div>
+
+    </div>
+    <!-- 右側聊天室 end -->
+</body>
+
+</html>
