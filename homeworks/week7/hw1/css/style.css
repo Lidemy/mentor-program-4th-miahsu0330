@@ -69,7 +69,7 @@ input[type="radio"] ,input[type="checkbox"] {
     padding-top: 20px;
 }
 .formGroup {
-    padding: 10px 0px;
+    padding: 10px 0px 30px;
 }
 .formGroup.error .error__label {
     display: block;
@@ -115,6 +115,7 @@ input[type="radio"] ,input[type="checkbox"] {
     color: #dc4f59;
     font-size: .9em;
     display: none;
+    position: absolute;
 }
 .error__label::before {
     content: '!';

@@ -1,16 +1,14 @@
 // 檢查一般 input 是否為空
 function isEmpty(element) {
   const input = element;
-  return Boolean(!input.value.trim());
+  return !input.value.trim();
 }
 
 // 檢查 radio 是否為空
 function checkRadio(element) {
-  const radio = element;
-  for (let i = 0; i < radio.length; i += 1) {
-    if (radio[i].checked) return false;
-  }
-  return true;
+  const radios = [...element];
+  const hasCheck = radios.some(radio => radio.checked);
+  return !hasCheck;
 }
 
 // 根據判定有沒有值 改變 Error 狀態
@@ -69,28 +67,14 @@ function checkValue(element) {
 function getValue(element) {
   const form = element;
   const obj = {};
-  obj.nickname = form.querySelector('#nickname').value;
-  obj.email = form.querySelector('#email').value;
-  obj.phone = form.querySelector('#phone').value;
-  obj.media = form.querySelector('#media').value;
-  obj.other = form.querySelector('#other').value;
-  const radioType = form.querySelectorAll('input[name="type"]');
-  for (let i = 0; i < radioType.length; i += 1) {
-    console.log(radioType[i].checked);
-    if (radioType[i].checked) {
-      obj.signUpClass = radioType[i].value;
+  const inputs = form.querySelectorAll('input');
+  for (let i = 0; i < inputs.length; i += 1) {
+    const input = inputs[i];
+    if (input.type !== 'radio' || input.checked) {
+      obj[input.name] = input.value;
     }
   }
-
-  const alertText = ` 提交成功！
-  暱稱：${obj.nickname}
-  信箱：${obj.email}
-  手機：${obj.phone}
-  報名類型：${obj.signUpClass}
-  怎麼知道這個活動：${obj.media}
-  其他：${obj.other}`;
-
-  return alertText;
+  return JSON.stringify(obj);
 }
 
 function firstEmpty(element) {
