@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新拖延運動報名表單</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1 class="title">新拖延運動報名表單</h1>
+        <div class="info date">活動日期：2020/12/10 ~ 2020/12/11</div>
+        <div class="info address">活動地點：台北市大安區新生南路二段1號</div>
+        <p class="info text-red">*必填</p>
+        <form action="" method="get" class="form">
+            <div class="formGroup">
+                <label for="nickname" class="formGroup__text required">暱稱</label>
+                <input type="text" name="nickname" id="nickname" class="formGroup__input" placeholder="您的回答" value="123">
+                <div class="error__label">此問題為必填</div>
+            </div>
+            <div class="formGroup">
+                <label for="email" class="formGroup__text required">電子郵件</label>
+                <input type="email" name="email" id="email" class="formGroup__input" placeholder="您的電子郵件">
+                <div class="error__label"></div>
+            </div>
+            <div class="formGroup">
+                <label for="phone" class="formGroup__text required">手機號碼</label>
+                <input type="tel" name="phone" id="phone" class="formGroup__input" placeholder="您的手機號碼">
+                <div class="error__label"></div>
+            </div>
+            <div class="formGroup">
+                <div class="formGroup__text required">報名類型</div>
+                <div class="inputGroup">
+                    <input type="radio" name="type" id="option1" value="躺在床上用想像力實作"  class="inputGtoup__radio"><label for="option1" class="inputGroup__label">躺在床上用想像力實作</label>
+                </div>
+                <div class="inputGroup">
+                    <input type="radio" name="type" id="option2" value="趴在地上滑手機找現成的" class="inputGroup__radio"><label for="option2" class="inputGroup__label"> 趴在地上滑手機找現成的</label>
+                </div>
+                <div class="error__label"></div>
+            </div>
+            <div class="formGroup">
+                <label for="media" class="formGroup__text required">怎麼知道這個活動的？</label>
+                <input type="text" name="media" id="media" class="formGroup__input" placeholder="您的回答">
+                <div class="error__label"></div>
+            </div>
+            <div class="formGroup">
+                <label for="other" class="formGroup__text">其他</label>
+                <div class="formGroup__desc">
+                    對活動的一些建議
+                </div>
+                <input type="text" name="other" id="other" class="formGroup__input" placeholder="您的回答">
+            </div>
+            <input class="btn submit" type="submit" value="提交">
+            <p class="info">請勿透過表單送出您的密碼。</p>
+        </form>
+    </div>
+    <footer class="footer">© 2020 © Copyright. All rights Reserved.</footer>
+</body>
+
+</html>
