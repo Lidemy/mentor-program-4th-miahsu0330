@@ -19,6 +19,7 @@ function changeErrorStatus(fun, thisErrorText, thisFormGroup) {
   if (fun) {
     elErrorText.innerText = '此問題為必填';
     thisFormGroup.classList.add('error');
+    return;
   }
   thisFormGroup.classList.remove('error');
 }
