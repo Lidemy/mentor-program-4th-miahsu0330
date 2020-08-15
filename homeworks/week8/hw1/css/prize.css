@@ -1,0 +1,131 @@
+.prizeDraw {
+    background: no-repeat center center / cover;
+    background-image: url(../images/bg-prize@2x.jpg);
+    position: relative;
+}
+.prizeDraw::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    opacity: .5;
+}
+.prizeDraw.first {
+    background-image: url(../images/FIRST.jpg)
+}
+.prizeDraw.second {
+    background-image: url(../images/SECOND.jpg)
+}
+.prizeDraw.third {
+    background-image: url(../images/THIRD.jpg)
+}
+.prizeDraw.none {
+    background-image: none;
+    background-color: #101010;
+}
+.prizeDraw.none::after {
+    opacity: .2;
+}
+.prizeDraw__content {
+    background-color: #fff;
+    max-width: 700px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 10px;
+    z-index: 1;
+    opacity: .95;
+}
+.prizeDraw__title {
+    font-size: 28px;
+    color: #367746;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #367746;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.prizeDraw__body {
+    padding: 0px 20px;
+    min-height: 300px;
+}
+.prizeDraw__desc.hide {
+    display: none;
+}
+.prize__text {
+    text-align: center;
+    font-size: 24px;
+    padding: 10px 0px 20px;
+    display: none;
+}
+.prize__text.show {
+    display: block;
+}
+.prizeDraw .list__item {
+    font-size: 18px;
+    display: inline-flex;
+    padding: 20px 0px;
+}
+.prizeDraw .list__item>:last-child {
+    flex: 1;
+    padding: 0px 10px;
+    text-align: justify;
+}
+.prizeDraw .list__itemH {
+    font-weight: 600;
+}
+.prizeDraw .prizeDraw__prizes {
+    margin: 0;
+    list-style: none;
+}
+.prizeDraw .prize::before {
+    content: '❤';
+    padding-right: 5px;
+    color: #367746;
+}
+.prizeDraw .list__item.prize {
+    padding: 0px;
+    padding-bottom: 5px;
+}
+.prizeDraw__footer {
+    padding: 10px;
+}
+.btn-prizeDraw {
+    background-color: #F67288;
+    color: #fff;
+    width: 100%;
+    font-size: 20px;
+    border-width: 0px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.btn-prizeDraw:hover {
+    background-color: #e36278;
+}
+.btn-prizeDraw:focus {
+    outline: 0;
+}
+
+
+@media (max-width: 575px){ 
+    .prizeDraw__content {
+        padding: 20px;
+    }
+    .prizeDraw .list__item { 
+        display: block;
+    }
+    .prizeDraw .list__itemH {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    .prizeDraw .list__item>:nth-child(1n) {
+        display: block;
+    }
+    .prizeDraw .list__item>:last-child {
+        padding: 0;
+    }
+}
