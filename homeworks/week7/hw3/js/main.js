@@ -1,16 +1,25 @@
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // 新增 todo
 function addTodo(element, parentNode) {
-  const el = element;
+  const inputTodo = element;
   const parent = parentNode;
   const value = element.value.trim();
-  const errorLabel = el.parentNode.querySelector('.error__label');
+  const errorLabel = inputTodo.parentNode.querySelector('.error__label');
   if (!value) {
     errorLabel.innerText = '沒有輸入內容哦！';
-    el.classList.add('error');
+    inputTodo.classList.add('error');
     return;
   }
   errorLabel.innerText = '';
-  el.classList.remove('error');
+  inputTodo.classList.remove('error');
   const newTodo = document.createElement('div');
   newTodo.classList.add('todo__item');
   newTodo.innerHTML = `
@@ -20,11 +29,12 @@ function addTodo(element, parentNode) {
   </div>
   <div class="todo__content">
       <div class="todo__text">
-          ${value}
+          ${escapeHtml(value)}
       </div>
   </div>
   <button class="btn-delete"></button>`;
   parent.querySelector('.todo__list').appendChild(newTodo);
+  inputTodo.value = '';
 }
 
 // 刪除 todo
