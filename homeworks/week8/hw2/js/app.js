@@ -2,27 +2,42 @@ const apiURL = 'https://api.twitch.tv/kraken';
 const clientId = '2l9sai4382a94piorthfgjbum3osq6';
 const accept = 'application/vnd.twitchtv.v5+json';
 const request = new XMLHttpRequest();
+const template = `
+<div class="card__inner">
+  <a class="card__headerBg" target="_blank" href="$url">
+    <div class="card__header gameImg" style="background-image: url($preview)">
+    <span class="card__viewers">$viewers viewers</span></div>
+  </a>
+  <div class="card__body">
+      <div class="card__authorImg" style="background-image: url($logo)"></div>
+      <div class="card__desc">
+        <div class="card__title gameChannel">$status}</div>
+        <div class="card__author gameAuthor">$name}</div>
+      </div>
+  </div>
+</div>
+`;
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
 
 // render 直播頻道
 function createCard(data) {
   const card = document.querySelector('.card');
   const cardGroup = document.createElement('div');
   cardGroup.classList.add('card__group');
-  cardGroup.innerHTML = `
-    <div class="card__inner">
-      <a class="card__headerBg" target="_blank" href="${data.channel.url}">
-        <div class="card__header gameImg" style="background-image: url(${data.preview.medium})">
-        <span class="card__viewers">${data.viewers} viewers</span></div>
-      </a>
-      <div class="card__body">
-          <div class="card__authorImg" style="background-image: url(${data.channel.logo})"></div>
-          <div class="card__desc">
-            <div class="card__title gameChannel">${data.channel.status}</div>
-            <div class="card__author gameAuthor">${data.channel.name}</div>
-          </div>
-      </div>
-    </div>
-  `;
+  cardGroup.innerHTML = template
+    .replace('$url', data.channel.url)
+    .replace('$preview', data.preview.medium)
+    .replace('$viewers', data.viewers)
+    .replace('$logo', data.channel.logo)
+    .replace('$status', escapeHtml(data.channel.status))
+    .replace('$name', escapeHtml(data.channel.name));
   card.appendChild(cardGroup);
 }
 
@@ -57,12 +72,18 @@ function gameName(activeEl) {
 // 發出直播頻道 request
 function reqLiveChannel(game) {
   const limit = 20;
-  request.open('GET', `${apiURL}/streams/?game=${game}&limit=${limit}`);
+  request.open('GET', `${apiURL}/streams/?game=${encodeURIComponent(game)}&limit=${limit}`);
   request.setRequestHeader('Accept', accept);
   request.setRequestHeader('Client-ID', clientId);
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
-      getChannel(JSON.parse(request.responseText));
+      let data = '';
+      try {
+        data = JSON.parse(request.responseText);
+      } catch (err) {
+        console.log(err);
+      }
+      getChannel(data);
       gameName(document.querySelectorAll('.gameList__item'));
     } else {
       console.log('error');
@@ -104,7 +125,13 @@ function reqTopGame() {
   request.setRequestHeader('Client-ID', clientId);
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
-      getTopGame(JSON.parse(request.responseText));
+      let data = '';
+      try {
+        data = JSON.parse(request.responseText);
+      } catch (err) {
+        console.log(err);
+      }
+      getTopGame(data);
       gameName(document.querySelectorAll('.gameList__item'));
     } else {
       console.log('error');
