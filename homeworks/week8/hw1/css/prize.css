@@ -1,3 +1,6 @@
+.header {
+    z-index: 2;
+}
 .prizeDraw {
     background: no-repeat center center / cover;
     background-image: url(../images/bg-prize@2x.jpg);
@@ -27,7 +30,6 @@
     background-color: #101010;
 }
 .prizeDraw.none::after {
-    opacity: .2;
 }
 .prizeDraw__content {
     background-color: #fff;
@@ -53,16 +55,18 @@
     padding: 0px 20px;
     min-height: 300px;
 }
-.prizeDraw__desc.hide {
+.lotteryDesc.hide {
     display: none;
 }
 .prize__text {
     text-align: center;
     font-size: 24px;
     padding: 10px 0px 20px;
+}
+.lotteryResult {
     display: none;
 }
-.prize__text.show {
+.lotteryResult.show {
     display: block;
 }
 .prizeDraw .list__item {
