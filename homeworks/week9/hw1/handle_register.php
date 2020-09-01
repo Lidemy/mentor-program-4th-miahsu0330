@@ -19,7 +19,6 @@
 		echo $sql;
 	$result = $conn->query($sql);
 	if(!$result) {
-		die($conn->error);
 		if(strpos($conn->error, 'Duplicate entry') !== false) {
 			echo $conn->error;
 			if(strpos($conn->error, 'username') !== false) {
