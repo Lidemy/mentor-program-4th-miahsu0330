@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week12 留言板</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<script>
+    const baseURL = 'http://mentor-program.co/mtr04group1/mia/week12/hw1/';
+    const siteKey = 'mia';
+
+    // 轉換成 html 字元
+    function escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    // 發送 request 
+    function req(apiURL, cb) {
+        $.ajax({
+            url: apiURL,
+            data: {
+                site_key: siteKey,
+            }
+        }).done(function (data) {
+            // 錯誤處理
+            if (!data.ok) {
+                console.log(data.message);
+                return;
+            }
+            cb(data);
+        });
+    }
+
+    // 渲染 comment 
+    function appendComment(container, data, isPrepend) {
+        let templete = `
+            <div class="col-sm-6 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${escapeHtml(data.nickname)}</h5>
+                        <p class="card-text">${escapeHtml(data.content)}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        if (isPrepend) {
+            container.prepend(templete);
+        } else {
+            container.append(templete);
+        }
+    }
+
+    // 得到資料庫 comment 內容
+    function getComments(begin, count) {
+        const container = $('.comments');
+        let start = begin;
+        let end = start + count;
+        req(`${baseURL}api_comments.php`, (data) => {
+            let comments = data.discussions;
+            if (end >= comments.length) {
+                end = comments.length;
+                $('.btn-more').hide();
+            }
+            for (let i = start; i < end; i++) {
+                appendComment($('.comments'), comments[i]);
+            }
+        });
+    }
+
+    // 新增 commment 
+    function addComment() {
+        const container = $('.comments');
+        const formData = {
+            nickname: $('input[name="nickname"]').val(),
+            content: $('textarea[name="content"]').val(),
+        }
+        $.ajax({
+            method: 'POST',
+            url: `${baseURL}api_add_comments.php?`,
+            data: {
+                site_key: siteKey,
+                nickname: formData.nickname,
+                content: formData.content,
+            }
+        }).done(function (data) {
+            // 錯誤處理
+            if (!data.ok) {
+                console.log(data.message);
+                return;
+            }
+            appendComment(container, formData, true);
+            if(container.children().length > 5)  {
+                container.children().last().remove(); // 維持 5 個
+            }
+        });
+    }
+
+
+    $(document).ready(() => {
+        let begin = 0; // 從第幾筆載入
+        let count = 5; // 一次載入幾筆
+
+        // 載入留言
+        getComments(begin, count);
+
+        // 載入更多留言
+        $('.btn-more').click(() => {
+            begin += count;
+            getComments(begin, count);
+        })
+
+        // 新增留言
+        $('.add-comment-form').submit(e => {
+            e.preventDefault();
+            addComment();
+        })
+    });
+</script>
+
+<body>
+    <div class="container p-5">
+        <div class="row">
+            <form class="col-12 add-comment-form">
+                <div class="form-group">
+                    <label for="nickname">暱稱</label>
+                    <input type="text" class="form-control" name="nickname" id="nickname" placeholder="請輸入暱稱">
+                </div>
+                <div class="form-group">
+                    <label for="content-textarea">留言內容</label>
+                    <textarea class="form-control" id="content-textarea" rows="3" name="content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">送出</button>
+            </form>
+            <div class="col-12 border-top mt-5 border-primary"></div>
+        </div>
+
+        <div class="row comments"></div>
+        <button type="button" class="btn btn-outline-primary btn-block mt-5 btn-more">載入更多</button>
+    </div>
+</body>
+
+</html>
