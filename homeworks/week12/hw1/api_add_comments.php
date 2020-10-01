@@ -18,15 +18,15 @@
         die();
     }
 
+    $site_key = $_POST['site_key'];
     $nickname = $_POST['nickname'];
     $content = $_POST['content'];
-    $site_key = $_POST['site_key'];
 
     // 執行 sql 語法
     $sql = 'INSERT INTO mia_discussions(site_key, nickname, content) VALUES (?, ?, ?)';
     $stmt = $conn->prepare($sql);
-	$stmt->bind_param('sss', $site_key, $nickname, $content);
-	$result = $stmt->execute();
+    $stmt->bind_param('sss', $site_key, $nickname, $content);
+    $result = $stmt->execute();
     if(!$result) {
         $json = array(
             "ok" => false,
