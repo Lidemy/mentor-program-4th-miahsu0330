@@ -55,7 +55,7 @@
 			<div class="board__header">
 				<div class="btns">
 					<?php if($username) { ?>
-						<?php if($role === 0) { ?>
+						<?php if(isAdmin($user)) { ?>
 							<a class="btn" href="admin.php">Dashboard</a>
 						<?php } ?>
 						<a class="btn btn-login" href="logout.php">Log out</a>
@@ -69,7 +69,11 @@
 				</div>
 				<div class="post">
 					<?php if($username) { ?>
-						<div class="post__desc">嗨！<?php echo escape($user['nickname']); ?><button class="btn btn-submit btn-s" id="editNickname">編輯暱稱</button></div>	
+
+						<div class="post__desc">
+							嗨！<?php echo escape($user['nickname']); ?>
+							<button class="btn btn-submit btn-s" id="editNickname">編輯暱稱</button>
+						</div>	
 						<form action="handle_update_user.php" method="post" class="updateUser hide">
 						<label for="nickname">新的暱稱</label>
 							<div>
@@ -83,10 +87,14 @@
 								</div>
 							</div>
 							<input class="btn btn-submit" type="submit" value="更新">
-							
 						</form>
 
-						<?php if($role !== 2) { ?>
+						<?php if($username && !hasPermission($user, 'create', NULL)) { ?>
+
+							<div class="post__desc">您已被停權</div>
+
+						<?php } else { ?>
+
 							<form action="handle_add_post.php" method="post" class="post__form">
 								<textarea name="content" id="content"  rows="5" class="post__content"></textarea>
 								<div class="error">
@@ -98,9 +106,13 @@
 								</div>
 								<input type="submit" value="提交" class="btn btn-submit">
 							</form>
+
 						<?php } ?>
+
 					<?php } else { ?>
+
 						<div class="post__desc">請先登入會員</div>
+
 					<?php } ?>
 				</div>
 			</div>
@@ -112,7 +124,7 @@
 								<span class="card__img"></span>
 								<div class="card__name"><?php echo escape($row['nickname']); ?></div>
 								<?php if(!empty($_SESSION['username'])) { 
-									if($role === 0) { ?>
+									if(hasPermission($user, 'update', $row)) { ?>
 										<a class="card__edit" href="update_comment.php?id=<?php echo $row['id']?>">編輯</a>
 										<a class="card__deleted" href="handle_delete_comment.php?id=<?php echo $row['id']?>">刪除</a>
 									<?php } else {

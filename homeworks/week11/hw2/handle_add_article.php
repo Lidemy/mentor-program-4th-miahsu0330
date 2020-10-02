@@ -1,22 +1,14 @@
 <?php
+    session_start();
     require_once('conn.php');
     require_once('utils.php');
-    session_start();
-    
+    require_once('check_permission.php');
+
     if(empty($_POST['title']) || empty($_POST['content'])) {
         header('Location: login.php?error=1');
         die();
     }
-
-    //檢查是否登入
-    $username = NULL;
-	if(!empty($_SESSION['username'])) {
-		$username = $_SESSION['username'];
-	} else {
-		header('Location: login.php');
-		die();
-	}
-
+    
     $title = $_POST['title'];
     $content = $_POST['content'];
 
