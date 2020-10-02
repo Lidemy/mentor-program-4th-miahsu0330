@@ -116,6 +116,7 @@ a {
                 text-align: justify;
                 overflow:auto;
                 display: block;
+                white-space: pre-wrap;
             }
         }
     }
@@ -206,6 +207,11 @@ input, textarea {
     .article__title {
         flex: 1;
         max-width: 70%;
+        a {
+            color: #000;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
     .article__create {
         font-size: .8em;
