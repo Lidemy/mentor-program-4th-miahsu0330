@@ -1,4 +1,3 @@
-
 <div class="header__main">
     <a href="index.php" class="logo">Mia's Blog</a>
     <nav class="navbar">
@@ -9,7 +8,16 @@
         </ul>
     </nav>
 </div>
-
-
-
-
+<div>
+    <div class="controlbar">
+        <ul class="controlbar__nav">
+            <?php if (!empty($_SESSION['username'])) { ?>
+                <li class="navbar__item"><a href="admin.php" class="controlbar__link">管理後台</a></li>
+                <li class="navbar__item"><a href="post.php" class="controlbar__link">新增文章</a></li>
+                <li class="navbar__item"><a href="logout.php" class="controlbar__link">登出</a></li>
+            <?php	} else {?>
+                <li class="controlbar__item"><a href="login.php" class="controlbar__link">登入</a></li>
+            <?php	}?>
+        </ul>
+    </div>
+</div>

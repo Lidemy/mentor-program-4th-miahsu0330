@@ -1,8 +1,8 @@
 <?php
+    session_start();
     require_once('conn.php');
     require_once('utils.php');
-    session_start();
-    
+
     if(empty($_POST['username']) || empty($_POST['password'])) {
         header('Location: login.php?error=1');
         die();

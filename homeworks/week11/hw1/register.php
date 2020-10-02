@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 <?php
-	// 引入 > 發送出表單到 handle_register
-	require_once('conn.php');
+// 引入 > 發送出表單到 handle_register
+require_once 'conn.php';
 ?>
 <body>
 	<div class="wrap">
@@ -19,27 +19,27 @@
 				</div>
 				<div class="board__title">
 					Register
-                </div>
+				</div>
 				<div class="post">
 					<form action="handle_register.php" method="post" class="post__form post__form-member">
-					<label for="username">Username</label>
-                    <input type="text" name="username" id="username">
-					<label for="password">Password</label>
-                    <input type="password" name="password" id="password">
-					<label for="nickname">nickname</label>
-                    <input type="text" name="nickname" id="nickname">
+						<label for="username">Username</label>
+						<input type="text" name="username" id="username">
+						<label for="password">Password</label>
+						<input type="password" name="password" id="password">
+						<label for="nickname">nickname</label>
+						<input type="text" name="nickname" id="nickname">
 						<div class="error">
-							<?php
-								if(!empty($_GET['error'])) {
-									$error_code = $_GET['error'];
-									if($error_code === '1') {
-										echo '資料不齊全，請再次填寫';
-									}else if($error_code === '2') {
-										$duplicate_key = $_GET['duplicate'];
-										echo $duplicate_key . ' 已被使用';
-									}
-								}
-							?>
+						<?php
+						if (!empty($_GET['error'])) {
+							$error_code = $_GET['error'];
+							if ($error_code === '1') {
+								echo '資料不齊全，請再次填寫';
+							} else if ($error_code === '2') {
+								$duplicate_key = $_GET['duplicate'];
+								echo $duplicate_key . ' 已被使用';
+							}
+						}
+						?>
 						</div>
 						<input type="submit" value="提交" class="btn btn-submit">
 					</form>

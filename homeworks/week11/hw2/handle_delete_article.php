@@ -1,16 +1,8 @@
 <?php
+    session_start();
     require_once('conn.php');
     require_once('utils.php');
-    session_start();
-    
-    //檢查是否登入
-    $username = NULL;
-	if(!empty($_SESSION['username'])) {
-		$username = $_SESSION['username'];
-	} else {
-		header('Location: login.php');
-		die();
-	}
+    require_once('check_permission.php');
 
     //檢查 id 是否為空
     if(empty($_GET['id'])) {

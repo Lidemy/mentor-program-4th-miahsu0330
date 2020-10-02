@@ -1,18 +1,9 @@
 <?php
+    session_start();
     require_once('conn.php');
     require_once('utils.php');
-    session_start();
+	require_once('check_permission.php');
     
-
-    //檢查是否登入
-    $username = NULL;
-	if(!empty($_SESSION['username'])) {
-		$username = $_SESSION['username'];
-	} else {
-		header('Location: login.php');
-		die();
-	}
-
     //檢查是否有帶上 id
     if(empty($_GET['id'])) {
         // header('location: index.php');
@@ -27,6 +18,7 @@
     }
     $content = $_POST['content'];
     $title = $_POST['title'];
+    $page = $_POST['page'];
 
     $sql = 'UPDATE mia_blog_articles SET content=?, title=? WHERE id=?';
     $stmt = $conn->prepare($sql);
@@ -35,5 +27,5 @@
     if(!$result) {
         die('無效指令:' . $conn->error);
     }
-    header('location: article.php?id=' . $id);
+    header('location:' . $page);
 ?>

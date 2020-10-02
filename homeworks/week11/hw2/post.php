@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>新增文章 | 部落格</title>
-	<link rel="stylesheet" href="./style.css">
-</head>
 <?php 
+	session_start();
 	require_once('conn.php');
 	require_once('utils.php');
-	session_start();
+	require_once('check_permission.php');
 
-	$username = NULL;
-	$user = NULL;
-	if(!empty($_SESSION['username'])) {
-		$username = $_SESSION['username'];
-		$user = getUserFromUsername($username);
-	} else {
-		header('Location: login.php');
-		die();
-	}
-
+	$username = $_SESSION['username'];
+	$user = getUserFromUsername($username);
 	$sql = 'SELECT * FROM mia_blog_articles order by id desc';
 	$stmt = $conn->prepare($sql);
 	$result = $stmt->execute();
@@ -30,22 +14,18 @@
 	}
 	$result = $stmt->get_result();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>新增文章 | 部落格</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
 <body>
 	<div class="wrap">
 	<header class="header">
-		<div></div>
-		<div>
-			<div class="controlbar">
-				<ul class="controlbar__nav">
-					<?php if($username) { ?>
-						<li class="navbar__item"><a href="admin.php" class="controlbar__link">管理後台</a></li>
-						<li class="navbar__item"><a href="index.php" class="controlbar__link">返回前台</a></li>
-					<?php	} else { ?>				
-						<li class="controlbar__item"><a href="login.php" class="controlbar__link">登入</a></li>
-					<?php	}  ?>
-				</ul>
-			</div>
-		</div>
+		<?php require_once('navbar.php'); ?>
 	</header>
 		<main class="main">
 			<div class="title">
