@@ -7,11 +7,23 @@
 		header('Location: index.php?error=1');
 		die();
 	}
+
+	$username = NULL;
+	$user = NULL;
+	if(!empty($_SESSION['username'])) {
+		$username = $_SESSION['username'];		// 得到目前登入者名稱
+		$user = getUserFromUsername($username);	// 得到目前登入者資訊
+	}
+	if (!isAdmin($user)) {
+		header('Location: index.php');
+		die();
+	}
+
 	$id = $_POST['id'];
 	$role = $_POST['role'];
 	$sql = 'UPDATE mia_users SET role=? WHERE id=?';
 	$stmt = $conn->prepare($sql);
-	$stmt->bind_param('ii', $role, $id);
+	$stmt->bind_param('si', $role, $id);
 
 	$result = $stmt->execute();
 	if(!$result) {

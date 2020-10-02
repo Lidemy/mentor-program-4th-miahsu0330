@@ -19,10 +19,8 @@
 		$user = getUserFromUsername($username);
 	}
 
-
 	// 檢查 進來的 user 的權限，如果不是 admin 導回首頁，如果是可以繼續操作
-	$role = intval($user['role']);
-	if ($role !== 0 ) {
+	if (!isAdmin($user)) {
 		header('Location: index.php');
 		die();
 	}
@@ -80,26 +78,26 @@
 							<td>
 								<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
 								<?php 
-									$role = intval($row['role']);
-									if($role === 0) { ?>
+									$role = $row['role'];
+									if($role === 'ADMIN') { ?>
 										<select name="role" id="">
-											<option value="0" selected>admin</option>
-											<option value="1">user</option>
-											<option value="2">disabled</option>
+											<option value="ADMIN" selected>admin</option>
+											<option value="NORMAL">user</option>
+											<option value="BANNED">disabled</option>
 										</select>
 								<?php } 
-									if($role === 1) { ?>
+									if($role === 'NORMAL') { ?>
 										<select name="role" id="">
-											<option value="0">admin</option>
-											<option value="1" selected>user</option>
-											<option value="2">disabled</option>
+											<option value="ADMIN">admin</option>
+											<option value="NORMAL" selected>user</option>
+											<option value="BANNED">disabled</option>
 										</select>									
 								<?php } 
-									if($role === 2) { ?>
+									if($role === 'BANNED') { ?>
 										<select name="role" id="">
-											<option value="0">admin</option>
-											<option value="1">user</option>
-											<option value="2" selected>disabled</option>
+											<option value="ADMIN">admin</option>
+											<option value="NORMAL">user</option>
+											<option value="BANNED" selected>disabled</option>
 										</select>									
 								<?php } ?>
 							</td>
