@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" defer></script>
+    <script src="./js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="todo">
+        <div class="title">
+            <div class="btns">
+                <button class="btn-clear">Clear list</button>
+                <button class="btn-save">Save list</button>    
+            </div>
+            <h1>Todo List</h1>
+        </div>
+        <div class="todo__body">
+            <div class="inputGroup">
+                <input class="inputGroup_input" name="content" type="text" id="addTodo" placeholder="What do you need to do?">
+                <button class="btn-add"></button>
+                <div class="error__label"></div>
+            </div>
+            <ul class="todo__control">
+                <li class="todo__link active" data-statu="incomplete">Incomplete<span class="count count-incomplete"></span></li>
+                <li class="todo__link" data-statu="complete">Complete<span class="count count-complete"></span></li>
+                <li class="todo__link">All<span class="count count-all"></span></li>
+            </ul>
+            <div class="todo__list"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
