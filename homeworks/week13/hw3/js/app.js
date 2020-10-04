@@ -72,7 +72,7 @@ function gameName(activeEl) {
   });
 }
 
-//  所有的 request 會從這裡發出
+//  所有的 request 會從這裡發出(fetch)
 function getData(url) {
   return fetch(url, reqHeader)
     .then(response => response.json());
