@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable camelcase */
 /* eslint-disable no-undef */
 
 const baseURL = 'http://mentor-program.co/mtr04group1/mia/week12/hw2/';
 const siteKey = 'mia';
+let todoCount = 0;
+let incompleteTodoCount = 0;
 
 // 轉換 html 字元
 function escapeHtml(unsafe) {
@@ -14,23 +17,25 @@ function escapeHtml(unsafe) {
     .replace(/'/g, '&#039;');
 }
 
+function updateCounter() {
+  $('.count-incomplete').text(incompleteTodoCount);
+  $('.count-complete').text(todoCount - incompleteTodoCount);
+  $('.count-all').text(todoCount);
+}
+
 // 新增 todo 到畫面上
-function appendTodo(container, data, isPrepend) {
+function appendTodo(container, data) {
   let isFinish = '';
-  let isChecked = '';
-  if (data.is_finish === 1) {
-    isFinish = 'finish';
-    isChecked = 'checked';
-  }
+  isFinish = Boolean(data.is_finish);
   const templete = `
-  <div class="todo__item ${isFinish}">
-    <div class="todo__content" data-id="${data.id}">
+  <div class="todo__item {finishClassName}">
+    <div class="todo__content" data-id="'{dataId}">
         <div class="control">
-            <input type="checkbox" name="finish" id="" class="control__checkbox" ${isChecked}>
+            <input type="checkbox" name="finish" id="" class="control__checkbox" {checked}>
             <div class="control__indicator"></div>
         </div>
         <div class="todo__text">
-          ${escapeHtml(data.content)}
+          {content}
         </div>
         <button class="btn-delete"></button>
     </div>
@@ -40,11 +45,13 @@ function appendTodo(container, data, isPrepend) {
     </div>   
   </div> 
   `;
-  if (isPrepend) {
-    container.prepend(templete);
-  } else {
-    container.append(templete);
-  }
+  container.append(
+    templete
+      .replace('{content}', escapeHtml(data.content))
+      .replace('{finishClassName}', isFinish ? 'finish' : '')
+      .replace('{dataId}', data.id ? data.id : '')
+      .replace('{checked}', isFinish ? 'checked' : ''),
+  );
 }
 
 // 切換 tab
@@ -54,11 +61,7 @@ function switchHide(allTodo, isComplete) {
     if (isComplete) {
       hasFinish = !hasFinish;
     }
-    if (hasFinish) {
-      $(item).addClass('hide');
-    } else {
-      $(item).removeClass('hide');
-    }
+    hasFinish ? $(item).addClass('hide') : $(item).removeClass('hide');
   });
 }
 
@@ -71,16 +74,16 @@ function filterTodo() {
   // 檢查目前所在 tab
   $.each(control, (i, item) => {
     if ($(item).hasClass('active')) {
-      active = Number($(item).attr('data-statu'));
+      active = $(item).attr('data-statu');
     }
   });
 
   // 根據目前所在 tab 進行切換
   switch (active) {
-    case 0:
+    case 'incomplete':
       switchHide(list, false);
       break;
-    case 1:
+    case 'complete':
       switchHide(list, true);
       break;
     default:
@@ -105,34 +108,38 @@ function switchTab(el) {
 // 新增 todo
 function addTodo() {
   const container = $('.todo__list');
+  const input = $('input[name="content"]');
+  const errorLabel = $('.error__label');
+  const content = input.val().trim();
+  if (!content) {
+    errorLabel.text('沒有輸入內容哦！');
+    input.addClass('error');
+    return;
+  }
+  errorLabel.text('');
+  input.removeClass('error');
   const formData = {
-    content: $('input[name="content"]').val(),
+    siteKey,
+    content,
   };
-  $.ajax({
-    method: 'POST',
-    url: `${baseURL}api_add_todo.php`,
-    data: {
-      site_key: siteKey,
-      content: formData.content,
-    },
-  }).done((data) => {
-    if (!data.ok) {
-      console.log(data.message);
-      return;
-    }
-    formData.id = data.id;
-    console.log(data.message);
-    appendTodo(container, formData, true);
-    filterTodo();
-    $('input[name="content"]').val('');
-  });
+  appendTodo(container, formData);
+  todoCount += 1;
+  incompleteTodoCount += 1;
+  updateCounter();
+  filterTodo();
+  $('input[name="content"]').val('');
 }
 
 // 刪除 todo
 function removeTodo(element) {
   const item = $(element).parents('.todo__item');
+  const isChecked = $(item).find('.control__checkbox')[0].checked;
   $(item).addClass('remove');
   setTimeout(() => { $(item).hide(); }, 300);
+  if (!isChecked) {
+    incompleteTodoCount -= 1;
+    updateCounter();
+  }
   filterTodo();
 }
 
@@ -141,9 +148,12 @@ function finishTodo(element) {
   const item = $(element).parents('.todo__item');
   if (element.checked) {
     $(item).addClass('finish');
+    incompleteTodoCount -= 1;
   } else {
     $(item).removeClass('finish');
+    incompleteTodoCount += 1;
   }
+  updateCounter();
   setTimeout(() => { filterTodo(); }, 450);
 }
 
@@ -178,8 +188,10 @@ function clearTodo() {
   $.each($('.todo__list').children(), (i, item) => {
     $(item).addClass('remove');
   });
+  incompleteTodoCount = 0;
+  todoCount = 0;
+  updateCounter();
 }
-
 
 // 載入 todo
 function getTodo() {
@@ -192,19 +204,24 @@ function getTodo() {
       return;
     }
     const { todos } = data;
-    console.log(data.message);
     for (let i = 0; i < todos.length; i += 1) {
       appendTodo(container, todos[i]);
+      if (!todos[i].is_finish) {
+        incompleteTodoCount += 1;
+      }
     }
+    todoCount = todos.length;
+    updateCounter();
     filterTodo();
   });
 }
+
 
 // 儲存 todo
 function saveTodos() {
   const list = $('.todo__list').children();
   const formData = [];
-  $.each(list, (i, item) => {
+  $.each(list.get().reverse(), (i, item) => {
     const id = Number($(item).find('.todo__content').attr('data-id'));
     const content = $(item).find('.todo__text').text().trim();
     const is_finish = $(item).hasClass('finish');
@@ -247,7 +264,7 @@ function clickEvent(el) {
     editTodo(e.target);
   });
   el.on('click', '.btn-update', (e) => {
-    const input = $(e.target).parents('input[name="content"]');
+    const input = $(e.target).parent().find('input[name="content"]');
     updateTodo(input);
   });
   el.on('click', '.btn-clear', () => {

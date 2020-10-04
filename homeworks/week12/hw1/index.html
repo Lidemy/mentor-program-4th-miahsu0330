@@ -98,9 +98,8 @@
                 return;
             }
             appendComment(container, formData, true);
-            if(container.children().length > 5)  {
-                container.children().last().remove(); // 維持 5 個
-            }
+            $('input[name="nickname"]').val('');
+            $('textarea[name="content"]').val('');
         });
     }
 
