@@ -89,18 +89,18 @@ async function reqLiveChannel(game) {
     console.log('err', error);
   }
   getChannel(data);
-  gameName(document.querySelectorAll('.gameList__item'));
+  gameName(document.querySelectorAll('.game-list__item'));
 }
 
 // render top game 清單
 function gameList(name) {
-  const list = document.querySelector('.gameList');
+  const list = document.querySelector('.game-list');
   const item = document.createElement('li');
-  item.classList.add('gameList__item');
+  item.classList.add('game-list__item');
   item.innerText = name;
   list.appendChild(item);
 
-  const firstEl = document.querySelector('.gameList__item');
+  const firstEl = document.querySelector('.game-list__item');
   firstEl.classList.add('active');
   reqLiveChannel(firstEl.innerText);
 }
@@ -124,15 +124,15 @@ async function reqTopGame() {
     console.log('err', error);
   }
   getTopGame(data);
-  gameName(document.querySelectorAll('.gameList__item'));
+  gameName(document.querySelectorAll('.game-list__item'));
 }
 
 
 // 監聽 top game click
 function clickEvent() {
-  const list = document.querySelector('.gameList');
+  const list = document.querySelector('.game-list');
   list.addEventListener('click', (e) => {
-    if (e.target.classList.contains('gameList__item')) {
+    if (e.target.classList.contains('game-list__item')) {
       [...list.children].forEach((element) => {
         element.classList.remove('active');
         e.target.classList.add('active');

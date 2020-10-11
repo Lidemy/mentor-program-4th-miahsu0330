@@ -30,7 +30,7 @@ html, body {
   margin: auto;
 }
 
-.gameList {
+.game-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,17 +46,17 @@ html, body {
   padding-left: 0;
 }
 
-.gameList {
+.game-list {
   list-style: none;
   font-size: 1.2rem;
 }
 
-.gameList__item {
+.game-list__item {
   padding: 10px 20px;
   cursor: pointer;
 }
 
-.gameList__item:after {
+.game-list__item:after {
   content: '';
   position: absolute;
   width: 0%;
@@ -69,11 +69,11 @@ html, body {
   background-color: #a970ff;
 }
 
-.gameList__item.active, .gameList__item:hover {
+.game-list__item.active, .game-list__item:hover {
   color: #9048FF;
 }
 
-.gameList__item.active:after, .gameList__item:hover:after {
+.game-list__item.active:after, .game-list__item:hover:after {
   width: 100%;
 }
 
@@ -131,7 +131,7 @@ html, body {
   color: #fff;
 }
 
-.card__authorImg {
+.card__authorimg {
   border-radius: 50%;
   width: 40px;
   height: 40px;
